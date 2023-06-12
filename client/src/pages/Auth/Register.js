@@ -3,6 +3,7 @@ import Layout from '../../componenets/layout/Layout'
 import {  toast } from 'react-toastify';
 import axios from "axios"
 import {useNavigate} from "react-router-dom"
+import "./../../styles/AuthStyles.css"
 
 const Register = () => {
 
@@ -32,13 +33,10 @@ const handleSubmit=async (e)=>{
 
     return (
 <Layout>
-    <div className='register'>
-    <h1>
-        Register Page
-    </h1>
-
-<form onSubmit={handleSubmit}>
-  <div className="mb-3">
+    <div className='form-container' style={{paddingBottom:"50px",paddingTop:"20px"}}>
+<h1>Register Page</h1>
+    <form onSubmit={handleSubmit}>
+    <div className="mb-3">
     <input type="text" 
     className="form-control" 
     onChange={(e)=>setName(e.target.value)}
