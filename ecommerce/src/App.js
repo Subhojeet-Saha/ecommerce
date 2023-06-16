@@ -16,38 +16,40 @@ import Createproduct from "./pages/admin/Createproduct";
 import Users from "./pages/admin/Users";
 import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
-
+import Products from "./pages/admin/Products";
+import UpdateProduct from "./pages/admin/UpdateProduct";
 
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/policy" element={<Policy />} />
-        <Route path="*" element={<Pagenotfound />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+	return (
+		<>
+			<Routes>
+				<Route path="/" element={<Homepage />} />
+				<Route path="/about" element={<About />} />
+				<Route path="/contact" element={<Contact />} />
+				<Route path="/policy" element={<Policy />} />
+				<Route path="*" element={<Pagenotfound />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/login" element={<Login />} />
 
-        <Route path="/dashboard" element={<Privateroute />} >
-          <Route path="user" element={<Dashboard />} />
-          <Route path="user/orders" element={<Orders />} />
-          <Route path="user/profile" element={<Profile />} />
-        </Route>
+				<Route path="/dashboard" element={<Privateroute />}>
+					<Route path="user" element={<Dashboard />} />
+					<Route path="user/orders" element={<Orders />} />
+					<Route path="user/profile" element={<Profile />} />
+				</Route>
 
-        <Route path="/dashboard" element={<Adminroute />} >
-          <Route path="admin" element={<Admindashboard />} />
-          <Route path="admin/create-category" element={<Createcategory />} />
-          <Route path="admin/create-product" element={<Createproduct />} />
-          <Route path="admin/users" element={<Users />} />
-        </Route>
+				<Route path="/dashboard" element={<Adminroute />}>
+					<Route path="admin" element={<Admindashboard />} />
+					<Route path="admin/create-category" element={<Createcategory />} />
+					<Route path="admin/create-product" element={<Createproduct />} />
+					<Route path="admin/product/:slug" element={<UpdateProduct />} />
+					<Route path="admin/products" element={<Products />} />
+					<Route path="admin/users" element={<Users />} />
+				</Route>
 
-        <Route path="/forgotpassword" element={<Forgotpassword />} />
-
-      </Routes>
-    </>
-  );
+				<Route path="/forgotpassword" element={<Forgotpassword />} />
+			</Routes>
+		</>
+	);
 }
 
 export default App;
