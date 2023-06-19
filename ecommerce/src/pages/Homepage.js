@@ -18,9 +18,9 @@ const Homepage = () => {
   //   get all cat
   const getAllCategory = async () => {
     try {
-      const data = await axios.get("api/v1/category/get-category");
+      const { data } = await axios.get("api/v1/category/get-category");
       if (data?.success) {
-        setCategories(data?.category);
+        setCategories(data.category);
       }
     } catch (error) {
       console.log(error);
@@ -40,7 +40,7 @@ const Homepage = () => {
       setLoading(false);
       setProducts(data.products);
     } catch (error) {
-        setLoading(false)
+      setLoading(false);
       console.log(error);
     }
   };
@@ -74,6 +74,7 @@ const Homepage = () => {
 
   //   filter by cat
   const handleFilter = (value, id) => {
+    console.log(value, id);
     let all = [...checked];
     if (value) {
       all.push(id);
@@ -109,7 +110,7 @@ const Homepage = () => {
       <div className="row mt-3">
         <div className="col-md-2">
           <h4 className="text-center">Filter by category</h4>
-          <div className="d-flex flex-x=column">
+          <div className="d-flex flex-column">
             {categories?.map((c) => (
               <Checkbox
                 key={c._id}
@@ -121,7 +122,7 @@ const Homepage = () => {
           </div>
           {/* price filter */}
           <h4 className="text-center mt-4">Filter by Price</h4>
-          <div className="d-flex flex-x=column">
+          <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => {
                 return (
@@ -132,7 +133,7 @@ const Homepage = () => {
               })}
             </Radio.Group>
           </div>
-          <div className="d-flex flex-x=column mt-3">
+          <div className="d-flex flex-column mt-3">
             <button
               className="btn btn-danger"
               onClick={() => window.location.reload()}
