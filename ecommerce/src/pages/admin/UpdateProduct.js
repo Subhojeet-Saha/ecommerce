@@ -43,9 +43,7 @@ const UpdateProduct = () => {
 		try {
 			const { data } = await axios.get("/api/v1/category/get-category");
 			if (data.success) {
-				console.log(data.category);
 				setCategories(data.category);
-				console.log(categories);
 			}
 		} catch (error) {
 			console.log(error);
