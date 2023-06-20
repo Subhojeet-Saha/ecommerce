@@ -4,6 +4,7 @@ import { useAuth } from "../context/auth";
 import axios from "axios";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
+import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
 	const [auth, setAuth] = useAuth();
@@ -115,12 +116,13 @@ const Homepage = () => {
 			console.log(error);
 		}
 	};
+	const navigate = useNavigate();
 	return (
 		<Layout title={"All product - Best offers"}>
-			<div className="row mt-3">
+			<div className="container-fluid row mt-3">
 				<div className="col-md-2">
 					<h4 className="text-center">Filter by category</h4>
-					<div className="d-flex flex-x=column">
+					<div className="d-flex flex-column">
 						{categories?.map((c) => (
 							<Checkbox
 								key={c._id}
@@ -132,7 +134,7 @@ const Homepage = () => {
 					</div>
 					{/* price filter */}
 					<h4 className="text-center mt-4">Filter by Price</h4>
-					<div className="d-flex flex-x=column">
+					<div className="d-flex flex-column">
 						<Radio.Group onChange={(e) => setRadio(e.target.value)}>
 							{Prices?.map((p) => {
 								return (
@@ -143,7 +145,7 @@ const Homepage = () => {
 							})}
 						</Radio.Group>
 					</div>
-					<div className="d-flex flex-x=column mt-3">
+					<div className="d-flex flex-column mt-3">
 						<button
 							className="btn btn-danger"
 							onClick={() => window.location.reload()}
@@ -166,7 +168,12 @@ const Homepage = () => {
 									<h5 className="card-title">{p.name}</h5>
 									<p className="card-text">{p.description.substring(0, 30)}</p>
 									<p className="card-text">$ {p.price}</p>
-									<button className="btn btn-primary ms-1">More Details</button>
+									<button
+										className="btn btn-primary ms-1"
+										onClick={() => navigate(`/product/${p.slug}`)}
+									>
+										More Details
+									</button>
 									<button className="btn btn-secondary ms-1">
 										Add to Cart
 									</button>
