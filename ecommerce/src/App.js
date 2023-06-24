@@ -23,43 +23,45 @@ import ProductDetail from "./pages/ProductDetail";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import CartPage from "./pages/CartPage";
+import AdminOrders from "./pages/admin/AdminOrders";
 
 function App() {
-	return (
-		<>
-			<Routes>
-				<Route path="/" element={<Homepage />} />
-				<Route path="/product/:slug" element={<ProductDetail />} />
-				<Route path="/categories" element={<Categories />} />
-				<Route path="/cart" element={<CartPage />} />
-				<Route path="/categories/:slug" element={<CategoryProduct />} />
-				<Route path="/search" element={<Search />} />
-				<Route path="/about" element={<About />} />
-				<Route path="/contact" element={<Contact />} />
-				<Route path="/policy" element={<Policy />} />
-				<Route path="*" element={<Pagenotfound />} />
-				<Route path="/register" element={<Register />} />
-				<Route path="/login" element={<Login />} />
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/product/:slug" element={<ProductDetail />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/categories/:slug" element={<CategoryProduct />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="*" element={<Pagenotfound />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
-				<Route path="/dashboard" element={<Privateroute />}>
-					<Route path="user" element={<Dashboard />} />
-					<Route path="user/orders" element={<Orders />} />
-					<Route path="user/profile" element={<Profile />} />
-				</Route>
+        <Route path="/dashboard" element={<Privateroute />}>
+          <Route path="user" element={<Dashboard />} />
+          <Route path="user/orders" element={<Orders />} />
+          <Route path="user/profile" element={<Profile />} />
+        </Route>
 
-				<Route path="/dashboard" element={<Adminroute />}>
-					<Route path="admin" element={<Admindashboard />} />
-					<Route path="admin/create-category" element={<Createcategory />} />
-					<Route path="admin/create-product" element={<Createproduct />} />
-					<Route path="admin/product/:slug" element={<UpdateProduct />} />
-					<Route path="admin/products" element={<Products />} />
-					<Route path="admin/users" element={<Users />} />
-				</Route>
+        <Route path="/dashboard" element={<Adminroute />}>
+          <Route path="admin" element={<Admindashboard />} />
+          <Route path="admin/create-category" element={<Createcategory />} />
+          <Route path="admin/create-product" element={<Createproduct />} />
+          <Route path="admin/product/:slug" element={<UpdateProduct />} />
+          <Route path="admin/products" element={<Products />} />
+          <Route path="admin/users" element={<Users />} />
+          <Route path="admin/orders" element={<AdminOrders />} />
+        </Route>
 
-				<Route path="/forgotpassword" element={<Forgotpassword />} />
-			</Routes>
-		</>
-	);
+        <Route path="/forgotpassword" element={<Forgotpassword />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;

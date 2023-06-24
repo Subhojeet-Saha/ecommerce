@@ -25,7 +25,7 @@ const userschema = new mongoose.Schema({
     },
 
     address: {
-        type: String,
+        type: {},
         required: true
     },
     answer: {
